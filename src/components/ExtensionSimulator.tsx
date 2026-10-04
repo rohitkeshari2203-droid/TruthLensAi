@@ -50,10 +50,11 @@ export const ExtensionSimulator: React.FC<ExtensionSimulatorProps> = ({
     }
   };
 
+  const [downloadNotice, setDownloadNotice] = useState(false);
+
   const downloadExtensionZip = () => {
-    alert(
-      'The complete Manifest V3 Chrome Extension package is located in the /extension directory of this repository, including manifest.json, background/service-worker.js, content/content-script.js, popup/popup.html, and options/options.html. You can load it directly into chrome://extensions with "Load unpacked".'
-    );
+    setDownloadNotice(true);
+    setTimeout(() => setDownloadNotice(false), 5000);
   };
 
   return (
@@ -112,6 +113,12 @@ export const ExtensionSimulator: React.FC<ExtensionSimulatorProps> = ({
             Manifest V3 Code Structure
           </button>
         </div>
+
+        {downloadNotice && (
+          <div className="bg-indigo-50 border-b border-indigo-200 text-indigo-900 p-3 text-xs leading-relaxed animate-in fade-in">
+            <strong>Extension Package:</strong> Located in the <code>/extension</code> directory, complete with <code>manifest.json</code>, <code>background/background.js</code>, <code>content/content.js</code>, <code>popup/popup.html</code>, and <code>options/options.html</code>. In Chrome or Brave, navigate to <code>chrome://extensions</code>, turn on <strong>Developer Mode</strong>, and click <strong>Load unpacked</strong>.
+          </div>
+        )}
 
         {/* Modal Body */}
         <div className="p-6 overflow-y-auto flex-1 bg-slate-100">

@@ -26,14 +26,19 @@ export const AdminReportsPage: React.FC = () => {
     }
   };
 
+  const [reportMsg, setReportMsg] = useState<{ text: string; error?: boolean } | null>(null);
+
   const handleUpdateStatus = async (id: string, status: 'REVIEWED' | 'DISMISSED') => {
     try {
       const updated = await adminApi.updateReportStatus(id, status);
       setReports((prev) =>
         prev.map((r) => (r.id === id ? { ...r, status: updated.status } : r))
       );
+      setReportMsg({ text: `Report status updated to ${status}.` });
+      setTimeout(() => setReportMsg(null), 3000);
     } catch (err: any) {
-      alert(err.message || 'Failed to update report status');
+      setReportMsg({ text: err.message || 'Failed to update report status', error: true });
+      setTimeout(() => setReportMsg(null), 3000);
     }
   };
 
@@ -48,6 +53,16 @@ export const AdminReportsPage: React.FC = () => {
             Review user-submitted disputes regarding analysis accuracy, stance classifications, or new evidence.
           </p>
         </div>
+
+        {reportMsg && (
+          <div
+            className={`p-3 rounded-md text-xs font-medium animate-in fade-in ${
+              reportMsg.error ? 'bg-rose-50 border border-rose-200 text-rose-800' : 'bg-emerald-50 border border-emerald-200 text-emerald-800'
+            }`}
+          >
+            {reportMsg.text}
+          </div>
+        )}
 
         {loading ? (
           <div className="py-16 text-center text-xs text-slate-400">Loading reports...</div>

@@ -39,6 +39,149 @@ const ReportSchema = z.object({
   details: z.string().optional(),
 });
 
+// In-memory async jobs store (Step 17 requirement)
+const jobsStore = new Map<string, {
+  id: string;
+  status: 'QUEUED' | 'PROCESSING' | 'COMPLETED' | 'FAILED';
+  input_type: InputType;
+  created_at: string;
+  analysis_id?: string;
+  error?: string;
+}>();
+
+const AsyncAnalyzeSchema = z.object({
+  type: z.enum(['TEXT', 'URL', 'IMAGE', 'SOCIAL']).default('TEXT'),
+  content: z.string().min(5, 'Content is required for analysis.'),
+  mimeType: z.string().optional(),
+});
+
+// Asynchronous verification job submission (POST /api/analyze)
+analyzeRouter.post('/', optionalAuth, async (req: AuthenticatedRequest, res) => {
+  try {
+    const parse = AsyncAnalyzeSchema.safeParse(req.body);
+    if (!parse.success) {
+      res.status(400).json({
+        success: false,
+        error: { code: 'INVALID_INPUT', message: parse.error.issues[0]?.message },
+      });
+      return;
+    }
+
+    const { type, content, mimeType } = parse.data;
+    const jobId = `job-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`;
+    const userId = req.user?.id;
+
+    jobsStore.set(jobId, {
+      id: jobId,
+      status: 'QUEUED',
+      input_type: type as InputType,
+      created_at: new Date().toISOString(),
+    });
+
+    // Run async in background without blocking response
+    (async () => {
+      try {
+        const job = jobsStore.get(jobId);
+        if (job) job.status = 'PROCESSING';
+
+        let analysisResult;
+        let originalText = content;
+        let sourceUrl: string | undefined;
+
+        if (type === 'URL') {
+          sourceUrl = content;
+          const article = await safelyFetchArticle(content);
+          originalText = article.content;
+          analysisResult = await analyzeContentWithGemini(`${article.title}\n\n${article.content}`, 'URL', content);
+        } else if (type === 'IMAGE') {
+          const ocr = await extractTextFromImage(content, mimeType || 'image/png');
+          originalText = ocr.extracted_text;
+          analysisResult = await analyzeContentWithGemini(originalText, 'IMAGE');
+        } else {
+          analysisResult = await analyzeContentWithGemini(content, type as InputType);
+        }
+
+        const analysis: Analysis = {
+          id: `ana-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`,
+          user_id: userId,
+          input_type: type as InputType,
+          original_text: originalText,
+          source_url: sourceUrl,
+          detected_language: analysisResult.detected_language,
+          normalized_text: analysisResult.normalized_text,
+          prediction: analysisResult.prediction,
+          confidence: analysisResult.confidence,
+          credibility_score: analysisResult.credibility_score,
+          explanation: analysisResult.explanation,
+          xai_factors: analysisResult.xai_factors,
+          claims: analysisResult.claims,
+          evidence: analysisResult.evidence,
+          status: 'COMPLETED',
+          created_at: new Date().toISOString(),
+        };
+
+        AnalysisRepository.create(analysis);
+
+        const updatedJob = jobsStore.get(jobId);
+        if (updatedJob) {
+          updatedJob.status = 'COMPLETED';
+          updatedJob.analysis_id = analysis.id;
+        }
+      } catch (err: any) {
+        const failedJob = jobsStore.get(jobId);
+        if (failedJob) {
+          failedJob.status = 'FAILED';
+          failedJob.error = err.message || 'Background verification job failed.';
+        }
+      }
+    })();
+
+    res.status(202).json({
+      success: true,
+      data: {
+        job_id: jobId,
+        status: 'QUEUED',
+        message: 'Analysis job queued successfully.',
+      },
+    });
+  } catch (err: any) {
+    res.status(500).json({
+      success: false,
+      error: { code: 'QUEUE_ERROR', message: err.message },
+    });
+  }
+});
+
+// Poll async job status (GET /api/analyze/jobs/:id)
+analyzeRouter.get('/jobs/:id', (req, res) => {
+  const { id } = req.params;
+  const job = jobsStore.get(id);
+
+  if (!job) {
+    res.status(404).json({
+      success: false,
+      error: { code: 'JOB_NOT_FOUND', message: 'Job ID does not exist or has expired.' },
+    });
+    return;
+  }
+
+  let analysis = null;
+  if (job.status === 'COMPLETED' && job.analysis_id) {
+    analysis = AnalysisRepository.findById(job.analysis_id);
+  }
+
+  res.json({
+    success: true,
+    data: {
+      job_id: job.id,
+      status: job.status,
+      analysis_id: job.analysis_id,
+      error: job.error,
+      analysis,
+    },
+  });
+});
+
 // Analyze direct text or social media post
 analyzeRouter.post('/text', optionalAuth, async (req: AuthenticatedRequest, res) => {
   try {
@@ -277,11 +420,19 @@ analyzeRouter.get('/analyses', optionalAuth, (req: AuthenticatedRequest, res) =>
     );
   }
 
+  const total = analyses.length;
+  const page = req.query.page ? parseInt(req.query.page as string, 10) : 1;
+  const limit = req.query.limit ? parseInt(req.query.limit as string, 10) : 50;
+  const paginated = analyses.slice((page - 1) * limit, page * limit);
+
   res.json({
     success: true,
     data: {
-      total: analyses.length,
-      analyses,
+      total,
+      page,
+      limit,
+      totalPages: Math.ceil(total / limit),
+      analyses: paginated,
     },
   });
 });

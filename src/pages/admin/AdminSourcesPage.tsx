@@ -63,12 +63,17 @@ export const AdminSourcesPage: React.FC = () => {
       setDomain('');
       setSourceName('');
       setDescription('');
+      setSourceMsg({ text: 'Source reputation saved successfully.' });
+      setTimeout(() => setSourceMsg(null), 3000);
     } catch (err: any) {
-      alert(err.message || 'Failed to save source');
+      setSourceMsg({ text: err.message || 'Failed to save source', error: true });
+      setTimeout(() => setSourceMsg(null), 3000);
     } finally {
       setSubmitting(false);
     }
   };
+
+  const [sourceMsg, setSourceMsg] = useState<{ text: string; error?: boolean } | null>(null);
 
   return (
     <AdminLayout>
@@ -91,6 +96,16 @@ export const AdminSourcesPage: React.FC = () => {
             Add Trusted Source
           </button>
         </div>
+
+        {sourceMsg && (
+          <div
+            className={`p-3 rounded-md text-xs font-medium animate-in fade-in ${
+              sourceMsg.error ? 'bg-rose-50 border border-rose-200 text-rose-800' : 'bg-emerald-50 border border-emerald-200 text-emerald-800'
+            }`}
+          >
+            {sourceMsg.text}
+          </div>
+        )}
 
         {/* Source Table */}
         <div className="bg-white border border-slate-200 rounded-lg overflow-hidden shadow-xs">

@@ -24,14 +24,19 @@ export const AdminUsersPage: React.FC = () => {
     }
   };
 
+  const [msg, setMsg] = useState<{ text: string; error?: boolean } | null>(null);
+
   const handleToggleStatus = async (user: User) => {
     try {
       const updated = await adminApi.updateUser(user.id, { is_active: !user.is_active });
       setUsers((prev) =>
         prev.map((u) => (u.id === user.id ? { ...u, is_active: updated.is_active } : u))
       );
+      setMsg({ text: `User ${user.name} status updated.` });
+      setTimeout(() => setMsg(null), 3000);
     } catch (err: any) {
-      alert(err.message || 'Failed to update user');
+      setMsg({ text: err.message || 'Failed to update user', error: true });
+      setTimeout(() => setMsg(null), 3000);
     }
   };
 
@@ -41,8 +46,11 @@ export const AdminUsersPage: React.FC = () => {
       setUsers((prev) =>
         prev.map((u) => (u.id === user.id ? { ...u, role: updated.role } : u))
       );
+      setMsg({ text: `User ${user.name} role changed to ${newRole}.` });
+      setTimeout(() => setMsg(null), 3000);
     } catch (err: any) {
-      alert(err.message || 'Failed to update role');
+      setMsg({ text: err.message || 'Failed to update role', error: true });
+      setTimeout(() => setMsg(null), 3000);
     }
   };
 
@@ -55,6 +63,16 @@ export const AdminUsersPage: React.FC = () => {
             Manage registered analyst accounts, role permissions, and access status.
           </p>
         </div>
+
+        {msg && (
+          <div
+            className={`p-3 rounded-md text-xs font-medium animate-in fade-in ${
+              msg.error ? 'bg-rose-50 border border-rose-200 text-rose-800' : 'bg-emerald-50 border border-emerald-200 text-emerald-800'
+            }`}
+          >
+            {msg.text}
+          </div>
+        )}
 
         <div className="bg-white border border-slate-200 rounded-lg overflow-hidden shadow-xs">
           <div className="overflow-x-auto">

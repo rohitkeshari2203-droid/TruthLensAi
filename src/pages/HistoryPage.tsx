@@ -39,15 +39,19 @@ export const HistoryPage: React.FC = () => {
     fetchAnalyses();
   };
 
+  const [feedbackMsg, setFeedbackMsg] = useState<string | null>(null);
+
   const handleDelete = async (id: string, e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    if (!confirm('Are you sure you want to delete this analysis?')) return;
     try {
       await analyzeApi.deleteAnalysis(id);
       setAnalyses((prev) => prev.filter((a) => a.id !== id));
+      setFeedbackMsg('Analysis deleted successfully.');
+      setTimeout(() => setFeedbackMsg(null), 3000);
     } catch (err: any) {
-      alert(err.message || 'Failed to delete analysis');
+      setFeedbackMsg(err.message || 'Failed to delete analysis');
+      setTimeout(() => setFeedbackMsg(null), 3000);
     }
   };
 
@@ -70,6 +74,12 @@ export const HistoryPage: React.FC = () => {
           Verify New Claim
         </Link>
       </div>
+
+      {feedbackMsg && (
+        <div className="p-3 bg-indigo-50 border border-indigo-200 text-indigo-900 text-xs rounded-lg animate-in fade-in">
+          {feedbackMsg}
+        </div>
+      )}
 
       {/* Search & Filter Bar */}
       <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-xs flex flex-wrap items-center gap-3">

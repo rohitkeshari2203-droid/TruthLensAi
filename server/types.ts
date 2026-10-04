@@ -119,3 +119,15 @@ export interface AuditLog {
   details?: Record<string, any>;
   created_at: string;
 }
+
+export interface AnalysisJob {
+  id: string;
+  status: 'QUEUED' | 'PROCESSING' | 'COMPLETED' | 'FAILED';
+  input_type: InputType;
+  content: string;
+  analysis_id?: string;
+  error?: string;
+  created_at: string;
+  updated_at: string;
+}
+

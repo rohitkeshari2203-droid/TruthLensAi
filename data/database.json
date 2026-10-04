@@ -1,0 +1,776 @@
+{
+  "users": [
+    {
+      "id": "usr-admin",
+      "name": "System Administrator",
+      "email": "admin@truthlens.ai",
+      "password_hash": "$2b$10$v63lWu.DE2tKzQ1q39zvLOis.XxWrj7ClE5XlvCiILui00dmAz/HG",
+      "role": "ADMIN",
+      "preferred_language": "en",
+      "is_verified": true,
+      "is_active": true,
+      "created_at": "2026-10-04T14:08:08.645Z",
+      "updated_at": "2026-10-04T14:08:08.645Z"
+    },
+    {
+      "id": "usr-analyst",
+      "name": "Senior Fact Analyst",
+      "email": "analyst@truthlens.ai",
+      "password_hash": "$2b$10$wRxlNjR//6aeiqB/cR9Dru7YHN7ev/Dav.xwckx9TVIlQk746SoLK",
+      "role": "USER",
+      "preferred_language": "en",
+      "is_verified": true,
+      "is_active": true,
+      "created_at": "2026-10-04T14:08:08.645Z",
+      "updated_at": "2026-10-04T14:23:27.863Z",
+      "last_login": "2026-10-04T14:23:27.863Z"
+    },
+    {
+      "id": "usr-1791123178391-he7f",
+      "name": "adarsh verma",
+      "email": "adarshverma7376@gmail.com",
+      "password_hash": "$2b$10$lzgq6TdjRTMocXjSMAhe0O60f6rIqF6u1tbOF3gFI4DZfPPbsMLwu",
+      "role": "USER",
+      "preferred_language": "en",
+      "is_verified": true,
+      "is_active": true,
+      "created_at": "2026-10-04T14:12:58.391Z",
+      "updated_at": "2026-10-04T14:12:58.391Z"
+    }
+  ],
+  "analyses": [
+    {
+      "id": "ana-1791123775847-r7lx",
+      "input_type": "TEXT",
+      "original_text": "New astronomical observations detect atmospheric compounds on candidate exoplanet.",
+      "detected_language": {
+        "code": "en",
+        "name": "English",
+        "confidence": 0.96,
+        "script": "Latin"
+      },
+      "normalized_text": "New astronomical observations detect atmospheric compounds on candidate exoplanet.",
+      "prediction": "Partially Supported",
+      "confidence": 78,
+      "credibility_score": 64,
+      "explanation": "The claim describes verifiable events or policy assertions. Cross-examination with registered repositories confirms partial consistency.",
+      "xai_factors": [
+        {
+          "category": "LINGUISTIC",
+          "impact": "POSITIVE",
+          "description": "Neutral, factual declarative structure without panic-inducing rhetoric."
+        }
+      ],
+      "claims": [
+        {
+          "id": "clm-fb-1791123775846",
+          "analysis_id": "fb-1791123775846",
+          "claim_text": "New astronomical observations detect atmospheric compounds on candidate exoplanet",
+          "claim_type": "FACTUAL_ASSERTION",
+          "confidence": 88
+        }
+      ],
+      "evidence": [],
+      "status": "COMPLETED",
+      "created_at": "2026-10-04T14:22:55.847Z"
+    },
+    {
+      "id": "ana-1791123258522-h8hv",
+      "input_type": "TEXT",
+      "original_text": "Solar and wind energy accounted for over 30% of global electricity generation milestone.",
+      "detected_language": {
+        "code": "en",
+        "name": "English",
+        "confidence": 0.96,
+        "script": "Latin"
+      },
+      "normalized_text": "Solar and wind energy accounted for over 30% of global electricity generation milestone.",
+      "prediction": "Partially Supported",
+      "confidence": 78,
+      "credibility_score": 64,
+      "explanation": "The claim describes verifiable events or policy assertions. Cross-examination with registered repositories confirms partial consistency.",
+      "xai_factors": [
+        {
+          "category": "LINGUISTIC",
+          "impact": "POSITIVE",
+          "description": "Neutral, factual declarative structure without panic-inducing rhetoric."
+        }
+      ],
+      "claims": [
+        {
+          "id": "clm-fb-1791123258522",
+          "analysis_id": "fb-1791123258522",
+          "claim_text": "Solar and wind energy accounted for over 30% of global electricity generation milestone",
+          "claim_type": "STATISTICAL",
+          "confidence": 88
+        }
+      ],
+      "evidence": [],
+      "status": "COMPLETED",
+      "created_at": "2026-10-04T14:14:18.522Z"
+    },
+    {
+      "id": "ana-1791123063295-lwzc",
+      "input_type": "TEXT",
+      "original_text": "Government officials announced nationwide renewable energy capacity exceeded 30% during the latest fiscal evaluation.",
+      "detected_language": {
+        "code": "en",
+        "name": "English",
+        "confidence": 0.96,
+        "script": "Latin"
+      },
+      "normalized_text": "Government officials announced nationwide renewable energy capacity exceeded 30% during the latest fiscal evaluation.",
+      "prediction": "Partially Supported",
+      "confidence": 78,
+      "credibility_score": 64,
+      "explanation": "The claim describes verifiable events or policy assertions. Cross-examination with registered repositories confirms partial consistency.",
+      "xai_factors": [
+        {
+          "category": "LINGUISTIC",
+          "impact": "POSITIVE",
+          "description": "Neutral, factual declarative structure without panic-inducing rhetoric."
+        }
+      ],
+      "claims": [
+        {
+          "id": "clm-fb-1791123063295",
+          "analysis_id": "fb-1791123063294",
+          "claim_text": "Government officials announced nationwide renewable energy capacity exceeded 30% during the latest fiscal evaluation",
+          "claim_type": "STATISTICAL",
+          "confidence": 88
+        }
+      ],
+      "evidence": [],
+      "status": "COMPLETED",
+      "created_at": "2026-10-04T14:11:03.295Z"
+    },
+    {
+      "id": "ana-seed-01",
+      "user_id": "usr-analyst",
+      "input_type": "TEXT",
+      "original_text": "The Reserve Bank of India has announced that all 500 rupee notes will be decommissioned by midnight today.",
+      "detected_language": {
+        "code": "en",
+        "name": "English",
+        "confidence": 0.99
+      },
+      "prediction": "Likely False",
+      "confidence": 94,
+      "credibility_score": 8,
+      "explanation": "The Reserve Bank of India and PIB Fact Check have explicitly debunked this circulating rumor. The current series of Rs 500 currency notes remains legal tender.",
+      "xai_factors": [
+        {
+          "category": "EVIDENCE",
+          "impact": "NEGATIVE",
+          "description": "Direct contradiction found in official RBI regulatory notifications and PIB Fact Check reports."
+        },
+        {
+          "category": "LINGUISTIC",
+          "impact": "NEGATIVE",
+          "description": "Employs false urgency tactics (\"by midnight today\") typical of financial panic disinformation."
+        },
+        {
+          "category": "SOURCE",
+          "impact": "NEGATIVE",
+          "description": "No verified citation provided; statement conflicts with all major financial news services."
+        }
+      ],
+      "claims": [
+        {
+          "id": "clm-01",
+          "analysis_id": "ana-seed-01",
+          "claim_text": "RBI has announced decommissioning of Rs 500 notes by midnight today.",
+          "claim_type": "POLICY",
+          "confidence": 96
+        }
+      ],
+      "evidence": [
+        {
+          "id": "ev-01",
+          "analysis_id": "ana-seed-01",
+          "claim_id": "clm-01",
+          "title": "PIB Fact Check: Rs 500 notes are not being discontinued",
+          "url": "https://pib.gov.in/FactCheck/detail.aspx?id=500note",
+          "source_name": "Press Information Bureau",
+          "source_type": "OFFICIAL",
+          "source_reputation": 95,
+          "publication_date": "2026-02-14",
+          "evidence_text": "Press Information Bureau confirmed that reports claiming RBI is withdrawing Rs 500 notes are completely false.",
+          "stance": "CONTRADICTS",
+          "relevance_score": 97
+        },
+        {
+          "id": "ev-02",
+          "analysis_id": "ana-seed-01",
+          "claim_id": "clm-01",
+          "title": "RBI Clarification on Currency Notes in Circulation",
+          "url": "https://rbi.org.in/scripts/BS_PressReleaseDisplay.aspx",
+          "source_name": "Reserve Bank of India",
+          "source_type": "OFFICIAL",
+          "source_reputation": 98,
+          "publication_date": "2026-02-15",
+          "evidence_text": "No notification regarding discontinuation of current legal tender Rs 500 denomination has been issued.",
+          "stance": "CONTRADICTS",
+          "relevance_score": 95
+        }
+      ],
+      "status": "COMPLETED",
+      "created_at": "2026-03-28T14:20:00Z"
+    },
+    {
+      "id": "ana-seed-02",
+      "user_id": "usr-analyst",
+      "input_type": "TEXT",
+      "original_text": "नासा ने घोषणा की है कि जेम्स वेब स्पेस टेलीस्कोप ने सौर मंडल के बाहर एक नए एक्सोप्लैनेट पर पानी के वाष्प का पता लगाया है।",
+      "detected_language": {
+        "code": "hi",
+        "name": "Hindi",
+        "confidence": 0.98,
+        "script": "Devanagari"
+      },
+      "prediction": "Likely True",
+      "confidence": 91,
+      "credibility_score": 88,
+      "explanation": "दावा वैज्ञानिक रिपोर्टों और नासा द्वारा प्रकाशित जेम्स वेब स्पेस टेलीस्कोप (JWST) के स्पेक्ट्रोस्कोपिक डेटा के अनुरूप है।",
+      "xai_factors": [
+        {
+          "category": "EVIDENCE",
+          "impact": "POSITIVE",
+          "description": "NASA astrophysics press releases and peer-reviewed spectroscopic datasets substantiate water vapor signatures in exoplanet atmospheres."
+        },
+        {
+          "category": "SOURCE",
+          "impact": "POSITIVE",
+          "description": "Attributed directly to astronomical observatories with matching scientific citations."
+        }
+      ],
+      "claims": [
+        {
+          "id": "clm-02",
+          "analysis_id": "ana-seed-02",
+          "claim_text": "जेम्स वेब स्पेस टेलीस्कोप ने एक्सोप्लैनेट के वातावरण में जल वाष्प के संकेत पाए।",
+          "claim_type": "FACTUAL_ASSERTION",
+          "confidence": 92
+        }
+      ],
+      "evidence": [
+        {
+          "id": "ev-03",
+          "analysis_id": "ana-seed-02",
+          "claim_id": "clm-02",
+          "title": "NASA Webb Detects Water Vapor in Rocky Exoplanet Atmosphere",
+          "url": "https://nasa.gov/mission_pages/webb/science/exoplanet-water",
+          "source_name": "NASA Official",
+          "source_type": "ACADEMIC",
+          "source_reputation": 98,
+          "publication_date": "2026-01-20",
+          "evidence_text": "Astronomers using NASAs James Webb Space Telescope have discovered evidence of water vapor around candidate exoplanet.",
+          "stance": "SUPPORTS",
+          "relevance_score": 93
+        }
+      ],
+      "status": "COMPLETED",
+      "created_at": "2026-03-29T09:15:00Z"
+    },
+    {
+      "id": "ana-seed-03",
+      "user_id": "usr-admin",
+      "input_type": "SOCIAL",
+      "original_text": "Drinking boiled garlic water cures 100% of viral infections within 3 hours according to doctors.",
+      "detected_language": {
+        "code": "en",
+        "name": "English",
+        "confidence": 0.99
+      },
+      "prediction": "Likely False",
+      "confidence": 96,
+      "credibility_score": 4,
+      "explanation": "Health authorities including WHO and peer-reviewed medical journals confirm that while garlic has mild antimicrobial properties, there is zero clinical evidence that it cures viral infections.",
+      "xai_factors": [
+        {
+          "category": "EVIDENCE",
+          "impact": "NEGATIVE",
+          "description": "World Health Organization mythbuster specifically disproves garlic water as a viral cure."
+        },
+        {
+          "category": "LINGUISTIC",
+          "impact": "NEGATIVE",
+          "description": "Contains absolute medical claims (\"100% cure within 3 hours\") with pseudoscientific attribution (\"according to doctors\")."
+        }
+      ],
+      "claims": [
+        {
+          "id": "clm-03",
+          "analysis_id": "ana-seed-03",
+          "claim_text": "Drinking boiled garlic water cures 100% of viral infections in 3 hours.",
+          "claim_type": "STATISTICAL",
+          "confidence": 98
+        }
+      ],
+      "evidence": [
+        {
+          "id": "ev-04",
+          "analysis_id": "ana-seed-03",
+          "claim_id": "clm-03",
+          "title": "WHO Advice for Public: Coronavirus disease (COVID-19) mythbusters",
+          "url": "https://who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public/myth-busters",
+          "source_name": "World Health Organization",
+          "source_type": "OFFICIAL",
+          "source_reputation": 98,
+          "publication_date": "2026-01-10",
+          "evidence_text": "Garlic is a healthy food that may have some antimicrobial properties. However, there is no evidence that eating garlic cures or protects against viruses.",
+          "stance": "CONTRADICTS",
+          "relevance_score": 96
+        }
+      ],
+      "status": "COMPLETED",
+      "created_at": "2026-04-01T11:42:00Z"
+    },
+    {
+      "id": "ana-seed-04",
+      "user_id": "usr-analyst",
+      "input_type": "URL",
+      "source_url": "https://example.com/energy-announcement",
+      "original_text": "Solar and wind accounted for over 30% of global electricity generation in recent quarterly milestones.",
+      "detected_language": {
+        "code": "en",
+        "name": "English",
+        "confidence": 0.97
+      },
+      "prediction": "Partially Supported",
+      "confidence": 84,
+      "credibility_score": 72,
+      "explanation": "Renewable energy reports verify historic generation records in several major economies, though the exact global percentage varies depending on seasonal hydroelectric inclusion.",
+      "xai_factors": [
+        {
+          "category": "EVIDENCE",
+          "impact": "POSITIVE",
+          "description": "International Energy Agency data supports peak renewable generation thresholds exceeding 30% in specified regions."
+        },
+        {
+          "category": "CONSISTENCY",
+          "impact": "NEUTRAL",
+          "description": "Nuance between combined renewables (including hydro) vs solely wind and solar requires careful metric distinction."
+        }
+      ],
+      "claims": [
+        {
+          "id": "clm-04",
+          "analysis_id": "ana-seed-04",
+          "claim_text": "Solar and wind accounted for over 30% of electricity generation.",
+          "claim_type": "STATISTICAL",
+          "confidence": 88
+        }
+      ],
+      "evidence": [
+        {
+          "id": "ev-05",
+          "analysis_id": "ana-seed-04",
+          "claim_id": "clm-04",
+          "title": "Global Electricity Review: Renewables Milestones",
+          "url": "https://ember-climate.org/insights/research/global-electricity-review",
+          "source_name": "Ember Energy Research",
+          "source_type": "ACADEMIC",
+          "source_reputation": 91,
+          "publication_date": "2026-02-18",
+          "evidence_text": "Wind and solar reached record highs, contributing significantly alongside broader low-carbon sources.",
+          "stance": "SUPPORTS",
+          "relevance_score": 87
+        }
+      ],
+      "status": "COMPLETED",
+      "created_at": "2026-04-02T16:05:00Z"
+    }
+  ],
+  "claims": [
+    {
+      "id": "clm-01",
+      "analysis_id": "ana-seed-01",
+      "claim_text": "RBI has announced decommissioning of Rs 500 notes by midnight today.",
+      "claim_type": "POLICY",
+      "confidence": 96
+    },
+    {
+      "id": "clm-02",
+      "analysis_id": "ana-seed-02",
+      "claim_text": "जेम्स वेब स्पेस टेलीस्कोप ने एक्सोप्लैनेट के वातावरण में जल वाष्प के संकेत पाए।",
+      "claim_type": "FACTUAL_ASSERTION",
+      "confidence": 92
+    },
+    {
+      "id": "clm-03",
+      "analysis_id": "ana-seed-03",
+      "claim_text": "Drinking boiled garlic water cures 100% of viral infections in 3 hours.",
+      "claim_type": "STATISTICAL",
+      "confidence": 98
+    },
+    {
+      "id": "clm-04",
+      "analysis_id": "ana-seed-04",
+      "claim_text": "Solar and wind accounted for over 30% of electricity generation.",
+      "claim_type": "STATISTICAL",
+      "confidence": 88
+    },
+    {
+      "id": "clm-fb-1791123063295",
+      "analysis_id": "fb-1791123063294",
+      "claim_text": "Government officials announced nationwide renewable energy capacity exceeded 30% during the latest fiscal evaluation",
+      "claim_type": "STATISTICAL",
+      "confidence": 88
+    },
+    {
+      "id": "clm-fb-1791123258522",
+      "analysis_id": "fb-1791123258522",
+      "claim_text": "Solar and wind energy accounted for over 30% of global electricity generation milestone",
+      "claim_type": "STATISTICAL",
+      "confidence": 88
+    },
+    {
+      "id": "clm-fb-1791123775846",
+      "analysis_id": "fb-1791123775846",
+      "claim_text": "New astronomical observations detect atmospheric compounds on candidate exoplanet",
+      "claim_type": "FACTUAL_ASSERTION",
+      "confidence": 88
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev-01",
+      "analysis_id": "ana-seed-01",
+      "claim_id": "clm-01",
+      "title": "PIB Fact Check: Rs 500 notes are not being discontinued",
+      "url": "https://pib.gov.in/FactCheck/detail.aspx?id=500note",
+      "source_name": "Press Information Bureau",
+      "source_type": "OFFICIAL",
+      "source_reputation": 95,
+      "publication_date": "2026-02-14",
+      "evidence_text": "Press Information Bureau confirmed that reports claiming RBI is withdrawing Rs 500 notes are completely false.",
+      "stance": "CONTRADICTS",
+      "relevance_score": 97
+    },
+    {
+      "id": "ev-02",
+      "analysis_id": "ana-seed-01",
+      "claim_id": "clm-01",
+      "title": "RBI Clarification on Currency Notes in Circulation",
+      "url": "https://rbi.org.in/scripts/BS_PressReleaseDisplay.aspx",
+      "source_name": "Reserve Bank of India",
+      "source_type": "OFFICIAL",
+      "source_reputation": 98,
+      "publication_date": "2026-02-15",
+      "evidence_text": "No notification regarding discontinuation of current legal tender Rs 500 denomination has been issued.",
+      "stance": "CONTRADICTS",
+      "relevance_score": 95
+    },
+    {
+      "id": "ev-03",
+      "analysis_id": "ana-seed-02",
+      "claim_id": "clm-02",
+      "title": "NASA Webb Detects Water Vapor in Rocky Exoplanet Atmosphere",
+      "url": "https://nasa.gov/mission_pages/webb/science/exoplanet-water",
+      "source_name": "NASA Official",
+      "source_type": "ACADEMIC",
+      "source_reputation": 98,
+      "publication_date": "2026-01-20",
+      "evidence_text": "Astronomers using NASAs James Webb Space Telescope have discovered evidence of water vapor around candidate exoplanet.",
+      "stance": "SUPPORTS",
+      "relevance_score": 93
+    },
+    {
+      "id": "ev-04",
+      "analysis_id": "ana-seed-03",
+      "claim_id": "clm-03",
+      "title": "WHO Advice for Public: Coronavirus disease (COVID-19) mythbusters",
+      "url": "https://who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public/myth-busters",
+      "source_name": "World Health Organization",
+      "source_type": "OFFICIAL",
+      "source_reputation": 98,
+      "publication_date": "2026-01-10",
+      "evidence_text": "Garlic is a healthy food that may have some antimicrobial properties. However, there is no evidence that eating garlic cures or protects against viruses.",
+      "stance": "CONTRADICTS",
+      "relevance_score": 96
+    },
+    {
+      "id": "ev-05",
+      "analysis_id": "ana-seed-04",
+      "claim_id": "clm-04",
+      "title": "Global Electricity Review: Renewables Milestones",
+      "url": "https://ember-climate.org/insights/research/global-electricity-review",
+      "source_name": "Ember Energy Research",
+      "source_type": "ACADEMIC",
+      "source_reputation": 91,
+      "publication_date": "2026-02-18",
+      "evidence_text": "Wind and solar reached record highs, contributing significantly alongside broader low-carbon sources.",
+      "stance": "SUPPORTS",
+      "relevance_score": 87
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-1",
+      "domain": "reuters.com",
+      "source_name": "Reuters",
+      "reputation_score": 96,
+      "category": "MAINSTREAM_NEWS",
+      "verification_status": "VERIFIED",
+      "description": "International news agency with rigorous editorial standards.",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "src-2",
+      "domain": "apnews.com",
+      "source_name": "Associated Press",
+      "reputation_score": 97,
+      "category": "MAINSTREAM_NEWS",
+      "verification_status": "VERIFIED",
+      "description": "Primary non-profit news cooperative dedicated to factual reporting.",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "src-3",
+      "domain": "bbc.com",
+      "source_name": "BBC News",
+      "reputation_score": 92,
+      "category": "MAINSTREAM_NEWS",
+      "verification_status": "VERIFIED",
+      "description": "Public service broadcaster with high editorial accountability.",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "src-4",
+      "domain": "who.int",
+      "source_name": "World Health Organization",
+      "reputation_score": 98,
+      "category": "OFFICIAL",
+      "verification_status": "OFFICIAL",
+      "description": "Specialized agency of the UN responsible for international public health.",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "src-5",
+      "domain": "snopes.com",
+      "source_name": "Snopes",
+      "reputation_score": 91,
+      "category": "FACT_CHECK",
+      "verification_status": "VERIFIED",
+      "description": "Pioneering independent fact-checking website.",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "src-6",
+      "domain": "factcheck.org",
+      "source_name": "FactCheck.org",
+      "reputation_score": 94,
+      "category": "FACT_CHECK",
+      "verification_status": "VERIFIED",
+      "description": "Annenberg Public Policy Center nonpartisan fact-checker.",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "src-7",
+      "domain": "pib.gov.in",
+      "source_name": "Press Information Bureau (PIB)",
+      "reputation_score": 95,
+      "category": "OFFICIAL",
+      "verification_status": "OFFICIAL",
+      "description": "Nodal agency of the Government of India for official announcements & Fact Check unit.",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "src-8",
+      "domain": "altnews.in",
+      "source_name": "Alt News",
+      "reputation_score": 89,
+      "category": "FACT_CHECK",
+      "verification_status": "VERIFIED",
+      "description": "Certified non-profit fact-checking initiative focused on Indian media.",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "src-9",
+      "domain": "thehindu.com",
+      "source_name": "The Hindu",
+      "reputation_score": 90,
+      "category": "MAINSTREAM_NEWS",
+      "verification_status": "VERIFIED",
+      "description": "Prominent national English daily newspaper of India.",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "src-10",
+      "domain": "nature.com",
+      "source_name": "Nature Research",
+      "reputation_score": 99,
+      "category": "ACADEMIC",
+      "verification_status": "OFFICIAL",
+      "description": "Peer-reviewed international scientific journal.",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "src-11",
+      "domain": "viralclicknews.xyz",
+      "source_name": "Viral Click Daily",
+      "reputation_score": 18,
+      "category": "USER_CONTENT",
+      "verification_status": "QUESTIONABLE",
+      "description": "Low-credibility aggregation site known for unverified clickbait.",
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  ],
+  "saved_items": [
+    {
+      "id": "saved-1",
+      "user_id": "usr-analyst",
+      "analysis_id": "ana-seed-01",
+      "created_at": "2026-03-29T10:00:00Z"
+    }
+  ],
+  "reports": [],
+  "audit_logs": [
+    {
+      "id": "log-1791123807982-ayba",
+      "user_id": "usr-analyst",
+      "action": "UNAUTHORIZED_ADMIN_ACCESS_ATTEMPT",
+      "details": {
+        "path": "/stats"
+      },
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-10-04T14:23:27.982Z"
+    },
+    {
+      "id": "log-1791123807974-qa9g",
+      "user_id": "usr-analyst",
+      "action": "FAILED_LOGIN_ATTEMPT",
+      "details": {
+        "email": "analyst@truthlens.ai"
+      },
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-10-04T14:23:27.974Z"
+    },
+    {
+      "id": "log-1791123807870-dv30",
+      "user_id": "usr-analyst",
+      "action": "USER_LOGIN",
+      "details": {
+        "email": "analyst@truthlens.ai"
+      },
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-10-04T14:23:27.870Z"
+    },
+    {
+      "id": "log-1791123775460-wz94",
+      "user_id": "usr-analyst",
+      "action": "UNAUTHORIZED_ADMIN_ACCESS_ATTEMPT",
+      "details": {
+        "path": "/stats"
+      },
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-10-04T14:22:55.460Z"
+    },
+    {
+      "id": "log-1791123775448-0yfe",
+      "user_id": "usr-analyst",
+      "action": "FAILED_LOGIN_ATTEMPT",
+      "details": {
+        "email": "analyst@truthlens.ai"
+      },
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-10-04T14:22:55.448Z"
+    },
+    {
+      "id": "log-1791123775339-mkw3",
+      "user_id": "usr-analyst",
+      "action": "USER_LOGIN",
+      "details": {
+        "email": "analyst@truthlens.ai"
+      },
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-10-04T14:22:55.339Z"
+    },
+    {
+      "id": "log-1791123764100-w0yy",
+      "user_id": "usr-analyst",
+      "action": "UNAUTHORIZED_ADMIN_ACCESS_ATTEMPT",
+      "details": {
+        "path": "/stats"
+      },
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-10-04T14:22:44.100Z"
+    },
+    {
+      "id": "log-1791123764090-q9gr",
+      "user_id": "usr-analyst",
+      "action": "FAILED_LOGIN_ATTEMPT",
+      "details": {
+        "email": "analyst@truthlens.ai"
+      },
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-10-04T14:22:44.090Z"
+    },
+    {
+      "id": "log-1791123763982-b0xc",
+      "user_id": "usr-analyst",
+      "action": "USER_LOGIN",
+      "details": {
+        "email": "analyst@truthlens.ai"
+      },
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-10-04T14:22:43.982Z"
+    },
+    {
+      "id": "log-1791123258523-qr50",
+      "action": "ANALYSIS_CREATED",
+      "details": {
+        "inputType": "TEXT",
+        "analysisId": "ana-1791123258522-h8hv",
+        "verdict": "Partially Supported"
+      },
+      "ip_address": "127.0.0.1",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+      "created_at": "2026-10-04T14:14:18.523Z"
+    },
+    {
+      "id": "log-1791123178410-piwz",
+      "user_id": "usr-1791123178391-he7f",
+      "action": "USER_REGISTERED",
+      "details": {
+        "email": "adarshverma7376@gmail.com"
+      },
+      "ip_address": "127.0.0.1",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+      "created_at": "2026-10-04T14:12:58.410Z"
+    },
+    {
+      "id": "log-1791123063296-e775",
+      "action": "ANALYSIS_CREATED",
+      "details": {
+        "inputType": "TEXT",
+        "analysisId": "ana-1791123063295-lwzc",
+        "verdict": "Partially Supported"
+      },
+      "ip_address": "127.0.0.1",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+      "created_at": "2026-10-04T14:11:03.296Z"
+    },
+    {
+      "id": "log-1",
+      "user_id": "usr-admin",
+      "action": "SYSTEM_INITIALIZED",
+      "details": {
+        "message": "TruthLens AI database bootstrapped successfully"
+      },
+      "created_at": "2026-10-04T14:08:08.645Z"
+    }
+  ]
+}
