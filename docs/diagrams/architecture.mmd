@@ -1,0 +1,52 @@
+graph TD
+    subgraph Client Layer
+        Web[React 19 + TypeScript SPA]
+        Ext[Chrome Extension Manifest V3]
+    end
+
+    subgraph API & Gateway
+        Server[Express / FastAPI API Gateway]
+        Auth[JWT & Bcrypt Security Middleware]
+        SSRF[SSRF Validator & DNS Filter]
+    end
+
+    subgraph Core Processing Pipeline
+        Scraper[Clean HTML Article Extractor]
+        OCR[Gemini 3.8 Flash Vision OCR]
+        Lang[Multilingual NLP & Language Detector]
+        Claim[Claim Isolation & Factual Extractor]
+    end
+
+    subgraph RAG & Verification Engine
+        Grounding[Google Search Live Grounding]
+        Stance[Stance Detection SUPPORTS/CONTRADICTS]
+        Scorer[Multi-Factor Credibility Scoring Engine]
+        XAI[Explainable AI XAI Synthesizer]
+    end
+
+    subgraph Storage & Persistence
+        DB[(PostgreSQL / ACID JSON Store)]
+        SourceRep[(Source Reputation Registry)]
+        Audit[(Audit & Security Logs)]
+    end
+
+    Web -->|HTTP / REST| Server
+    Ext -->|Background Fetch| Server
+
+    Server --> Auth
+    Server --> SSRF
+    SSRF --> Scraper
+
+    Server --> OCR
+    Server --> Lang
+    Lang --> Claim
+
+    Claim --> Grounding
+    Grounding --> Stance
+    Stance --> Scorer
+    SourceRep --> Scorer
+    Scorer --> XAI
+
+    XAI --> DB
+    Server --> DB
+    Auth --> Audit

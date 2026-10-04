@@ -1,0 +1,13 @@
+graph LR
+    User[User / Analyst]
+    ExtWeb[External News & Official Registries]
+    System((0.0 TruthLens AI Verification System))
+    Admin[System Administrator]
+
+    User -->|Submit Text / URL / Image| System
+    System -->|Verification Report, Evidence & Score| User
+    System -->|Query Live Fact Checks & Articles| ExtWeb
+    ExtWeb -->|Official Bulletins & Evidence Snippets| System
+
+    Admin -->|Manage Sources & Review Disputes| System
+    System -->|Audit Logs & Analytics Metrics| Admin

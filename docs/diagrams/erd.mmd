@@ -1,0 +1,101 @@
+erDiagram
+    USERS ||--o{ ANALYSES : creates
+    USERS ||--o{ SAVED_ITEMS : bookmarks
+    USERS ||--o{ REPORTS : submits
+    USERS ||--o{ AUDIT_LOGS : triggers
+
+    ANALYSES ||--o{ CLAIMS : contains
+    ANALYSES ||--o{ EVIDENCE : substantiates
+    ANALYSES ||--o{ SAVED_ITEMS : saved_by
+    ANALYSES ||--o{ REPORTS : flagged_in
+
+    CLAIMS ||--o{ EVIDENCE : linked_to
+
+    USERS {
+        string id PK
+        string name
+        string email
+        string password_hash
+        string role
+        string preferred_language
+        boolean is_active
+        datetime created_at
+        datetime last_login
+    }
+
+    ANALYSES {
+        string id PK
+        string user_id FK
+        string input_type
+        text original_text
+        string source_url
+        json detected_language
+        string prediction
+        float confidence
+        float credibility_score
+        text explanation
+        json xai_factors
+        string status
+        datetime created_at
+    }
+
+    CLAIMS {
+        string id PK
+        string analysis_id FK
+        text claim_text
+        string claim_type
+        float confidence
+    }
+
+    EVIDENCE {
+        string id PK
+        string analysis_id FK
+        string claim_id FK
+        string title
+        string url
+        string source_name
+        string source_type
+        float source_reputation
+        string publication_date
+        text evidence_text
+        string stance
+        float relevance_score
+    }
+
+    SOURCES {
+        string id PK
+        string domain
+        string source_name
+        float reputation_score
+        string category
+        string verification_status
+        text description
+        datetime updated_at
+    }
+
+    SAVED_ITEMS {
+        string id PK
+        string user_id FK
+        string analysis_id FK
+        datetime created_at
+    }
+
+    REPORTS {
+        string id PK
+        string user_id FK
+        string analysis_id FK
+        string reason
+        text details
+        string status
+        datetime created_at
+    }
+
+    AUDIT_LOGS {
+        string id PK
+        string user_id FK
+        string action
+        string ip_address
+        string user_agent
+        json details
+        datetime created_at
+    }

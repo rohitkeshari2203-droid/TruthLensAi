@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TruthLens AI QuickVerify</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <header class="header">
+      <div class="logo-group">
+        <div class="badge-icon">TL</div>
+        <div>
+          <h2>TruthLens AI</h2>
+          <span class="sub">Browser Companion</span>
+        </div>
+      </div>
+      <a href="../options/options.html" target="_blank" class="settings-link" title="Options">⚙</a>
+    </header>
+
+    <div class="main-body">
+      <div class="mode-selector">
+        <button id="btn-tab-selection" class="active">Selected Claim</button>
+        <button id="btn-tab-page">Current Page URL</button>
+      </div>
+
+      <div class="input-section">
+        <textarea id="claim-input" placeholder="Highlight text on page or paste claim here..."></textarea>
+      </div>
+
+      <button id="btn-verify" class="btn-primary">
+        <span id="btn-text">Verify Claim</span>
+        <div id="spinner" class="spinner hidden"></div>
+      </button>
+
+      <div id="error-box" class="error-box hidden"></div>
+
+      <!-- Result Section -->
+      <div id="result-box" class="result-box hidden">
+        <div class="result-header">
+          <span class="label">Verdict:</span>
+          <span id="result-verdict" class="verdict-tag">Likely False</span>
+        </div>
+
+        <div class="metrics-grid">
+          <div>
+            <span class="metric-label">Confidence</span>
+            <strong id="result-confidence">89%</strong>
+          </div>
+          <div>
+            <span class="metric-label">Credibility</span>
+            <strong id="result-score">24/100</strong>
+          </div>
+          <div>
+            <span class="metric-label">Evidence</span>
+            <strong id="result-evidence-count">3 sources</strong>
+          </div>
+        </div>
+
+        <p id="result-explanation" class="result-explanation"></p>
+
+        <a id="btn-open-full" href="#" target="_blank" class="btn-secondary">
+          Open Full Analysis in TruthLens Web →
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

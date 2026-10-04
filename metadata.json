@@ -1,0 +1,7 @@
+{
+  "name": "TruthLens AI",
+  "description": "Multilingual AI-Powered Fake News & Misinformation Detection Platform with Evidence-First Verification",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

@@ -1,0 +1,21 @@
+graph TD
+    User[User / Analyst]
+    DB_Analyses[(Analyses Store)]
+    DB_Sources[(Sources Store)]
+    ExtNet[Web & Fact Checking Registries]
+
+    P1((1.0 Ingest & Sanitize Input))
+    P2((2.0 Extract Claims & Detect Lang))
+    P3((3.0 RAG Evidence Retrieval))
+    P4((4.0 Stance & Credibility Evaluation))
+    P5((5.0 Report Synthesis & Export))
+
+    User -->|URL / Text / Screenshot| P1
+    P1 -->|Cleaned Text Stream| P2
+    P2 -->|Factual Assertions| P3
+    P3 <-->|Search Queries & Results| ExtNet
+    P3 -->|Retrieved Evidence Snippets| P4
+    DB_Sources -->|Domain Reputation Weights| P4
+    P4 -->|Verdict, Scores & Factors| P5
+    P5 -->|Persist Analysis| DB_Analyses
+    P5 -->|Render Interactive Report| User
